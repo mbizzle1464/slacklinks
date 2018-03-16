@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Slack Links</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!-- Added Moment JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron image-bg img-responsive vertical-center">
+            <h1 class="text-center">
+                <strong>Slack Link Management</strong>
+            </h1>
+            <h3 class="text-center">
+                <strong>Submit your urls to this page to store and keep track urls inside slack.</strong>
+            </h3>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- Add Employee  -->
+                <div class="panel panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <strong>Add URL Here</strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+
+
+                        <!-- Entry Form -->
+                        <form>                                                
+                            <div class="form-group">
+                                <label for="role">URL</label>
+                                <input type="text" class="form-control" id="url-input">
+                            </div>                            
+                            <button type="submit" class="btn btn" id="add-input">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Current URL Links-->
+                <div class="panel panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <strong>List of URLs </strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover" id='employee-table'>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Url</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody id="add-employee-row">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- Moment.js Reference -->
+    <script type="text/javascript" src="assets/js/moment.js"></script>
+    <script type="text/javascript" src="assets/js/js.js"></script>
+</body>
+
+</html>
