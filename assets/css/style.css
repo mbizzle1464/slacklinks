@@ -79,3 +79,20 @@ strong {
     font-family: 'Fjalla One',
     sans-serif;
 }
+
+/*btn-primary*/
+.btn-primary {
+    background-color: rgb(0, 57, 166);
+}
+.btn-primary:hover {
+     background-color: rgb(0, 57, 166);
+}
+/*btn-danger*/
+
+.btn-danger {
+    background-color: rgb(198, 12, 48);
+}
+
+input { 
+    margin: 5px auto;   
+}

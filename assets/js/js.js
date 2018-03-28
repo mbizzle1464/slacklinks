@@ -245,7 +245,6 @@ var addInput = function () {
 }
     
 };
-
 // database reference for URL storage  
 database.ref().on('child_added', function (childSnapshot) {
 
@@ -267,6 +266,7 @@ database.ref().on('child_added', function (childSnapshot) {
     console.log("The read failed: " + errorObject.code);
 
 });
+
 
 var searchInput = function () {
     event.preventDefault();
