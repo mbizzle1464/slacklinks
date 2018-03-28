@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+/*body*/
+body {
+    background-color: #d3d3d3;
+    font-family: 'Open Sans', sans-serif;
+}
+p, a, ul, li, form, label, tr,
+th, td, article, aside, footer, header,
+nav,
+    {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*nav*/
+.navbar-default {
+    background-color: rgb(0, 57, 166);
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: rgb(0, 57, 166);     
+}
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+}
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
+    color: #ffffff;
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover{
+    background-color: rgb(0, 57, 166);
+    color: #ffffff;
+}
+.navbar-brand img {
+    position: absolute; 
+    top: 0; 
+    width: 350px;   
+}
+.dropdown-menu>li>a {
+     background-color: rgb(0, 57, 166);
+     color: #ffffff;
+}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+    background-color: rgb(0, 57, 166);
+    color: #ffffff;
+}
+.dropdown-menu {
+    background-color: rgb(0, 57, 166);
+    color: #ffffff;
+}
+
+/*image background*/
+.image-bg {
+    background: url('../images/a.jpg') no-repeat center center;
+    background-color: rgb(0,57,166);
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    /* for mobile and tablets */
+    background-size: cover;
+    padding: 25px;
+    position: relative;
+}
+.jumbotron {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-shadow: 1px 1px #000000;
+}
+h1 {
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: 400;   
+}
+strong { 
+    font-family: 'Fjalla One',
+    sans-serif;
+}

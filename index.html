@@ -9,74 +9,222 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <!-- Added Moment JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    
 </head>
 
 <body>
-    <div class="container">
 
-        <!-- Jumbotron -->
-        <div class="jumbotron image-bg img-responsive vertical-center">
-            <h1 class="text-center">
-                <strong>Slack Link Management</strong>
-            </h1>
-            <h3 class="text-center">
-                <strong>Submit your urls to this page to store and keep track urls inside slack.</strong>
-            </h3>
-
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-
-                <!-- Add Employee  -->
-                <div class="panel panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <strong>Add URL Here</strong>
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-
-
-                        <!-- Entry Form -->
-                        <form>                                                
-                            <div class="form-group">
-                                <label for="role">URL</label>
-                                <input type="text" class="form-control" id="url-input">
-                            </div>                            
-                            <button type="submit" class="btn btn" id="add-input">Submit</button>
-                        </form>
-
-                    </div>
+    <!--MODAL HTML BELOW-->
+    <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h2>Welcome to Slack Link Management</h2>
+                    <p>Please Sign up or Log in to log your url for SMU Jan 2018 Cohort</p>
+    
+                    <!--buttons for different sign in/up methods-->
+                    <button class="btn btn-default btn-block" id="form-sign">
+                        <i class="fa fa-pencil"></i>
+                        <i class="fa fa-fw"></i>Sign In
+                    </button>
+                    <button class="btn btn-primary btn-block" id="form-up">
+                        <i class="fa fa-pencil"></i>
+                        <i class="fa fa-fw"></i>Sign Up
+                    </button>
                 </div>
-
-                <!-- Current URL Links-->
-                <div class="panel panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <strong>List of URLs </strong>
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-hover" id='employee-table'>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Url</th>                                    
-                                </tr>
-                            </thead>
-                            <tbody id="add-employee-row">
-
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="modal-footer text-center">
+                    <button class="btn btn-danger" type="button" data-dismiss="modal" aria-hidden="true" id="logInComplete">Close</button>
                 </div>
             </div>
         </div>
     </div>
+    <div id="signUpModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <!--sign up form-->
+                    <form id="sign-up-form" class="text-center">
+                        <p class="instructions">Please fill out all fields</p>
+                        <input id="firstName" type="text" placeholder="First Name" class="text-center form-control">
+                        <input id="lastName" type="text" placeholder="Last Name" class="text-center form-control">
+                        <input id="email-up" type="email" placeholder="Email" class="text-center form-control">
+                        <input id="password-up" type="password" placeholder="Password must be 6 characters" class="text-center form-control">
+                        <div id="errorMsg"></div>
+                        <div class="modal-footer text-center">
+                            <button type="button" id="submit-up" class="btn btn-primary">Sign Up</button>
+                            <button type="button" id="close-up" class="btn btn-danger closeBtn">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="signInModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <!-- sign in form -->
+                    <form id="sign-in-form" class="text-center">
+                        <p class="instructions">Please provide your registered email and password</p>
+                        <input id="email-sign" type="email" placeholder="Email" class="text-center form-control">
+                        <input id="password-sign" type="password" placeholder="Password" class="text-center form-control">
+                    </form>
+                </div>
+                <div id="errorMessage"></div>
+                <div class="modal-footer text-center">
+                    <button type="button" id="submit-sign" class="btn btn-primary">Sign In</button>
+                    <button type="button" id="close-sign" class="btn btn-danger closeBtn">Close</button>
+                    <button type="button" id="passwordSign" class="btn btn-default passwordBtn">Forgot Password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="urlModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h3>Please Enter a Valid URL</h3>
+                    <p>Try again. Please note: http(s):// is a requirement.</p>                    
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" id="close-sign" class="btn btn-default closeBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="passwordModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <!-- sign in form -->
+                    <form id="password-form" class="text-center">
+                        <p class="instructions">Please enter your registered email</p>
+                        <input id="email-password" type="email" placeholder="Email" class="text-center form-control">
+                    </form>
+                </div>
+                <div id="errorPassword"></div>
+                <div class="modal-footer text-center">
+                    <button type="button" id="submit-password" class="btn btn-primary">Send Email</button>
+                    <button type="button" id="close-password" class="btn btn-danger closeBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<div class="container">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#index"><img class="img-responsive" src="assets/images/logo.png" alt="logo"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                
+                <ul class="nav navbar-nav navbar-right">                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In / Sign Up
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a id="logIn" href="#">Log In / Sign Up</a>
+                            </li>                            
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a id="logOut" href="#">Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron image-bg img-responsive vertical-center">
+        <h1 class="text-center">
+            <strong>SMU Coding Bootcamp<br> January 2018 Cohort</strong>
+        </h1>       
+        <p class="text-center">This site is designed to help keep track of URLs sent in the Slack App. Simply enter the URL you want to save for the class and it will store below. Quick search to find your link quickly using keywords in the url.</p>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <!-- Add URL  -->
+            <div class="panel panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <strong>Add URL Here</strong>
+                    </h3>
+                </div>
+                <div class="panel-body">
+            
+            
+                    <!-- Entry Form -->
+                    <form id="url-form">
+                        <div class="form-group">
+                            <label for="curl">URL (http:// Required)</label>
+                            <input id="url-input" type="url" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn" id="add-input">Submit</button>
+                    </form>
+            
+                </div>
+            </div>
+
+
+            <!-- Search Feature -->
+            <div class="panel panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <strong>Quick Search</strong>
+                    </h3>
+                    
+                </div>
+                <div class="panel-body">
+                    <label>Search for letters in link (example: "javascript" or "w3schools")</label>
+                    <input class="form-control" type="text" id="search-input" placeholder="Search for URLs..">
+                </div>
+            </div>
+            
+            <!-- Current URL Links-->
+            <div class="panel panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <strong>List of URLs </strong>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover" id='url-table'>
+                        <thead>
+                            <tr>                                
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="add-url-row">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -85,7 +233,15 @@
         crossorigin="anonymous"></script>
     <!-- Moment.js Reference -->
     <script type="text/javascript" src="assets/js/moment.js"></script>
+    <!-- jQuery Validate Reference --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script type="text/javascript" src="assets/js/js.js"></script>
+    <!-- validation of url-form --> 
+    <script>
+    $(document).ready(function(){
+    $('#url-form').validate();  
+    });
+    </script>
 </body>
 
 </html>
