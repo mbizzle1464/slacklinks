@@ -45,6 +45,7 @@ database.ref().on("value", function (snapshot) {
 //////////////////////////////////HOME PAGE LOAD/////////////////////////////////////
 var pageToLoad,
     url = "";
+
 //////////////////////////////////MODAL CODE/////////////////////////////////////
 // Login User 
 var logIn = function () {
@@ -210,7 +211,8 @@ var addInput = function () {
     event.preventDefault();
     url = $('#url-input').val().trim();
     date = moment().format("MMMM Do YYYY");
-    //console.log(url);
+var pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    console.log(url);
     //console.log(date);
     if (!userLoggedIn) {
         logIn();    
@@ -221,10 +223,9 @@ var addInput = function () {
         $('.closeBtn').on("click", function () {
             $("#urlModal").modal("hide");
         });
-        return
-        
+        return   
     }
-    else if ($("#url-input-error")) {
+    else if (!pattern.test(url)) {
         $("#urlModal").modal("show");
         $('.closeBtn').on("click", function () {
             $("#urlModal").modal("hide");
@@ -232,6 +233,7 @@ var addInput = function () {
         return
     }
     else {
+
         var newURL = {
             url: url,
             date: date,
@@ -242,8 +244,7 @@ var addInput = function () {
         //console.log(newURL.date);
         $('#url-input').val('');
         return false;
-}
-    
+    }
 };
 // database reference for URL storage  
 database.ref().on('child_added', function (childSnapshot) {
